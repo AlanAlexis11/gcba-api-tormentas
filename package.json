@@ -7,7 +7,7 @@
     "start": "node src/app.js",
     "dev": "node --watch src/app.js",
     "local-prod": "cross-env NODE_ENV=production node src/app.js",
-    "deploy": "git pull origin main && npm install && npm run prod && pm2 startOrRestart ../ecosystem.config.js --only @gcba/api-pdf --update-env && pm2 save",
+    "deploy": "git pull origin main && npm install && npm run prod && pm2 startOrRestart ../ecosystem.config.js --only gcba-tormentas-pdf --update-env && pm2 save",
     "prod": "node src/app.js"
   },
   "dependencies": {
