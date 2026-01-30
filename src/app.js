@@ -26,6 +26,8 @@ await app.register(cors, {
 
 // El hook de Referer ajustado para ser flexible
 app.addHook('preHandler', async (request, reply) => {
+  if(request.url.includes("/health")) return;
+
   if (isProd) {
     const referer = request.headers.referer;
     // Verificamos si el inicio del referer coincide con alguno de nuestros permitidos
