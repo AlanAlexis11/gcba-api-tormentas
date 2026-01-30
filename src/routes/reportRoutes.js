@@ -22,4 +22,7 @@ export default async function (fastify, opts) {
         },
         handler: ReportsController.generateReport 
     });
+     fastify.get('/health', {
+        handler: ReportsController.getHealth 
+    });
 }

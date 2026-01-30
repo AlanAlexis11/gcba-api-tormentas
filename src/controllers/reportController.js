@@ -68,6 +68,11 @@ export class ReportsController {
         }
     }
 
+   static async getHealth(request, reply) {
+    // En Fastify se usa .send() en lugar de .json()
+    return reply.status(200).send({ status: 'running' });
+}
+
     static _transformDbData(dbData, fechaInicio, fechaFin, listaComunas) {
         // 1. Pre-formatear fechas fuera de la lógica de retorno
         const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
