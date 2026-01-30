@@ -16,7 +16,8 @@ export class ReportsController {
             return res.status(400).json({ status: 'ERROR', message: 'Faltan parámetros de fecha' });
         }
 
-        const apiUrl = `${process.env.API_URL_TORMENTAS}/api/v1/suceso/reportes-sucesos?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&comunas=${listaComunas}`;
+        const apiUrl = `${process.env.API_URL_RELEVAMIENTOS}/api/v1/suceso/reportes-sucesos?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&comunas=${listaComunas}`;
+        console.log("🚀 ~ ReportsController ~ generateReport ~ apiUrl:", apiUrl)
 
         try {
             // 2. Llamada a la API interna
@@ -55,10 +56,14 @@ export class ReportsController {
             const metrics = getPerformanceMetrics(startTime, startMemory);
             console.table({ FRAMEWORK: 'FASTIFY', API_CALL: 'SUCCESS', ...metrics });
 
-            return;
+            return reply;
 
         } catch (error) {
             console.error("Error obteniendo datos de la API:", error.message);
+            if (reply.raw.headersSent) {
+                reply.raw.end();
+                return;
+            }
             return reply.status(500).send({ error: "Error al obtener datos para el reporte" });
         }
     }

@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "type": "module",
   "main": "src/app.js",
-  "scripts": {
-    "start": "node src/app.js",
-    "dev": "node --watch src/app.js",
-    "local-prod": "cross-env NODE_ENV=production node src/app.js",
-    "prod": "cross-env NODE_ENV=production pm2 start src/app.js --name api-pdf-tormentas --max-memory-restart 3G"
-  },
+"scripts": {
+  "start": "node src/app.js",
+  "dev": "node --watch src/app.js",
+  "local-prod": "cross-env NODE_ENV=production node src/app.js",
+  "prod": "node src/app.js" 
+},
   "dependencies": {
     "@fastify/cors": "^11.2.0",
     "@fastify/static": "^9.0.0",
