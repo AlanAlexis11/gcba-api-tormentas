@@ -6,9 +6,8 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "node --watch src/app.js",
-    "local-prod": "cross-env NODE_ENV=production node src/app.js",
-    "deploy": "git pull origin main && npm install && npm run prod && pm2 startOrRestart ../ecosystem.config.js --only gcba-tormentas-pdf --update-env && pm2 save",
-    "prod": "node src/app.js"
+    "prod": "node src/app.js",
+    "deploy": "git pull origin main && npm install && pm2 startOrRestart ../ecosystem.config.js --only api-tormentas-pdf --env production --update-env && pm2 save"
   },
   "dependencies": {
     "@fastify/cors": "^11.2.0",
